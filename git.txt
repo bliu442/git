@@ -40,3 +40,5 @@ git remote set-url origin ... 修改远程仓库
 git remote -v 查看远端仓库
 git push -u origin master 将本地仓库内容推送到远端仓库(-u 表示第一次推送master分支的所有内容，后面再推送就不需要-u了)
 git pull origin master 把远程分支master上的代码下载并合并到本地所在分支
+
+.gitignore 指定文件或文件夹被忽略,不跟踪不包含在版本控制中(临时文件,编译生成的中间文件等)
