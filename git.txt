@@ -1,0 +1,41 @@
+git错误记录
+E325错误 git在指令意外中断时,一般会有一个缓存的机制,它会记住上次中断的问题.在下次进入vim指令时,如果很重要的中断一般会提示你前面有某个操作不当或者没有结束
+解决: 删除根目录下的.git文件夹.COMMIT_EDITMSG.swp
+rm .git/.COMMIT_EDITMSG.swp
+
+git项目初次push error: failed to push some refs to '...'
+解决: git push -f origin master强制将本地文件推送至远程,这样会将远程仓库的已有的文件清掉
+
+本地仓库使用git commit --amend命令追加到上一次的提交后,想要推送到远端仓库
+使用git push --force origin branch-name,覆盖上一次的提交历史
+
+SSH配置
+https://tjfish.top/posts/%E5%9C%A8github%E4%B8%8A%E6%B7%BB%E5%8A%A0SSH-key/
+SSH翻墙
+https://tjfish.top/posts/git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E8%A2%AB%E5%A2%99/
+
+
+git add + 文件名/文件夹名 将该文件/文件夹 所有改动暂存
+git commit -m "版本说明" 将当前暂存区提交到本地库 每次使用git commit 命令都会在本地版本库生成一个40位的哈希值,这个哈希值也叫commit-id
+git commit --amend 追加提交,它可以在不增加一个新的commit-id的情况下将新修改的代码追加到前一次的commit-id中
+git reset --hard HEAD^ 回到前一个版本 其中HEAD表示当前最新版本,HEAD^表示当前版本的前一个版本,HEAD^^表示当前版本的前前个版本,也可以使用HEAD~1表示当前版本的前一个版本,HEAD~100表示当前版本的前100版本
+git reflog 如果从之前的版本看不到后面的版本的版本号，使用该命令可以查看操作记录
+
+git log  查看版本记录 (HEAD -> master)所在行是当前版本
+
+分支操作
+查看分支：git branch
+创建分支：git branch <name>
+切换分支：git checkout <name>
+创建+切换分支：git checkout -b <name>
+合并某分支到当前分支：git merge <name>
+删除分支：git branch -d <name>
+解决冲突:分支对文件进行更改，master对该文件也进行了更改，git无法进行快速合并
+
+远程操作
+git remote add origin ... 增加了与远程仓库...关联
+git remote remove ... 移除远端仓库关联
+git remote set-url origin ... 修改远程仓库
+git remote -v 查看远端仓库
+git push -u origin master 将本地仓库内容推送到远端仓库(-u 表示第一次推送master分支的所有内容，后面再推送就不需要-u了)
+git pull origin master 把远程分支master上的代码下载并合并到本地所在分支
